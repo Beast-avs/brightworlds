@@ -1,2 +1,68 @@
-<p>landing-page works!</p>
-<p>use pagination here</p>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <form>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputEmail4">Прізвище</label>
+                        <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputPassword4">Ім'я</label>
+                        <input type="text" class="form-control" id="inputPassword4" placeholder="Password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress">Телефон</label>
+                    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputCity">Місто</label>
+                        <select id="inputState" class="form-control">
+                            <option selected>Моє місто</option>
+                            <option *ngFor="let city of cities">{{city.Description}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputState">Відділення</label>
+                        <select id="inputState" class="form-control" (click)="OnLoadOfficesByCity('Київ')">
+                            <option selected>Найближче до мене</option>
+                            <option *ngFor="let office of offices">{{office.Description}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="gridCheck">
+                        <label class="form-check-label" for="gridCheck">
+                            Треба передзвонити?
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <legend class="col-form-label col-sm-2 pt-0">Форма оплати</legend>
+                    <div class="col-sm-10">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+                            <label class="form-check-label" for="gridRadios1">
+                                Наложений платіж
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                            <label class="form-check-label" for="gridRadios2">
+                                Картою
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <label for="exampleFormControlTextarea1">Коментар</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Оформити</button>
+            </form>
+        </div>
+    </div>
+</div>
