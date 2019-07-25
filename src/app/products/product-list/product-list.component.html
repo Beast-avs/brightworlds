@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="row">
+        <div class="col w-100">
+            <h3 class="text-center">Перелік товарів</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="card border-primary mb-3 mx-1" style="width: 20rem;" *ngFor="let product of products | async">
+            <h3 class="card-header mx-auto text-center">
+                {{product.name}}
+            </h3>    
+            <img src="{{product.logo}}" class="card-img-top" alt="{{product.photo_alt}}" />
+            <div class="card-body">
+                <p class="card-text">{{product.shortDescription}}</p>
+                <p class="card-text text-right"><small class="text-muted">В наявності {{product.inStock}}</small></p>
+                <a class="btn btn-primary" (click)="OnAddCart(product)">Додати до кошика</a>
+                <a [routerLink]="['/product', product.id]" class="btn btn-secondary">Подивитися ({{product.id}})</a>
+            </div>
+            <div class="card-footer">
+                <h5>{{product.price.uah}}</h5>
+            </div>
+        </div>
+    </div>
+</div>

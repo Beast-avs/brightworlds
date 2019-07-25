@@ -1,0 +1,20 @@
+import { Product } from './product';
+
+
+export const PRODUCTS: Product[] = [
+    {
+        id: 'TSHRT0001',
+        name: 'Вибрати футболку',
+        shortDescription: 'Неймовірні та карколомні пригоди Собаці у Всесвіті',
+        description: `<ul>
+        <li><b>Розмір:</b> onesize</li>
+        <li><b>Стать:</b> unisex</li>
+        <li><b>Країна виробник:</b> Україна</li>
+        <li><b>Склад:</b> 95% бавовна, 5% еластан</li>
+        </ul>`,
+        images: ['./assets/images/planet_1.jpg', './assets/images/planet_2.jpg', './assets/images/sobacsia_logo.jpg'],
+        // tslint:disable-next-line:max-line-length
+        options: {color: ['black', 'white'], pictures: ['./assets/images/pic_1.jpg', './assets/images/pic_2.jpg', './assets/images/pic_3.jpg']},
+        price: {uah: '399 грн', usd: '$20'}
+    }
+];
