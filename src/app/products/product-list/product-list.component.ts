@@ -11,7 +11,7 @@ import { CartService } from 'src/app/cart/cart.service';
   templateUrl: './product-list.component.html'
 })
 export class ProductListComponent implements OnInit {
-  private products: Observable<Product[]>;
+  public products: Observable<Product[]>;
   private prods: Product[];
   private selectedId: number;
   private message: string;

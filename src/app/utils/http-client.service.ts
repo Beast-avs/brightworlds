@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -53,4 +53,29 @@ export class HttpClientService {
       }
     ));
   }
+
+  getProducts(): Observable<any> {
+    // tslint:disable-next-line:max-line-length
+    const hdr = new HttpHeaders({'Gdata-version': '3.0', Authorization: 'Bearer ya29.GltSB9NmQoVoS8nKfvT20EKEWQe0cs96NIHgmDIbUbR4sNjXY07nRDE6I-rmJRSil4Zal-ehYyWEZRuviBhBywR-bWguPKItKqLdAlF9F_5_7w0tmu5IIZiXS2nz'});
+
+    return this.http.get(
+      // tslint:disable-next-line:max-line-length
+      'https://sheets.googleapis.com/v4/spreadsheets/1dRNb20ULrzI5wuR-wa2gSaT570mfRv3enZ1lGSOBZ7E/values/a1:i100',
+      {headers: hdr}
+    ).pipe(map(
+      data => {
+        // console.log(JSON.parse(JSON.stringify(data)).values);
+        const ar = JSON.parse(JSON.stringify(data)).values;
+        // skip header
+        const ar2 = [];
+        for (let i = 0; i < ar.length; i++) {
+          if (i > 0) {
+            ar2.push(ar[i]);
+          }
+        }
+        // console.log(ar2);
+        return ar2;
+      }
+    ));
+    }
 }

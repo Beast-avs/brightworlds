@@ -22,6 +22,24 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'PRD0002',
+        name: 'Собаця і чайник на орбіті',
+        // tslint:disable-next-line:max-line-length
+        shortDescription: 'Продовження пригоди Собаці у космосі. На цей раз вона разом із Капітаном Сідом запалює зірки',
+        description: `<b>Футболки</b>
+        <ul>
+        <li>Склад: льон 90%, віскоза 10%</li>
+        <li>Ручна робота</li>
+        <li>Гарний настрій гарантовано</li>
+        </ul>`,
+        // tslint:disable-next-line:max-line-length
+        logo: './assets/images/space_2.jpg',
+        images: ['./assets/images/space_1.jpg', './assets/images/space_2.jpg'],
+        options: {color: ['#000000', '#ffffff']},
+        price: {uah: '399 грн', usd: '$20'},
+        inStock: 10
+    },
+    {
+        id: 'PRD0003',
         name: 'Собаця з офіційним візитом',
         // tslint:disable-next-line:max-line-length
         shortDescription: 'І таке траплялося у житті Собаці. З місією миру делегація відлетіла на далеку планету у сузір\'ї Ореона',
@@ -40,7 +58,26 @@ export const PRODUCTS: Product[] = [
         inStock: 2
     },
     {
-        id: 'PRD0003',
+        id: 'PRD0004',
+        name: 'Собаця з офіційним візитом',
+        // tslint:disable-next-line:max-line-length
+        shortDescription: 'І таке траплялося у житті Собаці. З місією миру делегація відлетіла на далеку планету у сузір\'ї Ореона',
+        description: `<b>Футболки</b>
+        <ul>
+        <li>Склад: льон 90%, віскоза 10%</li>
+        <li>Ручна робота</li>
+        <li>Гарний настрій гарантовано</li>
+        </ul>`,
+        // tslint:disable-next-line:max-line-length
+        logo: './assets/images/planet_2.jpg',
+        // tslint:disable-next-line:max-line-length
+        images: ['./assets/images/planet_.jpg', './assets/images/planet_2.jpg'],
+        options: {color: ['#000000', '#ffffff']},
+        price: {uah: '399 грн', usd: '$20'},
+        inStock: 2
+    },
+    {
+        id: 'PRD0005',
         name: 'Собаця чинить шкоду',
         // tslint:disable-next-line:max-line-length
         shortDescription: 'Казочка про те як Собацю підставили на чужині кляті ...',
@@ -59,7 +96,26 @@ export const PRODUCTS: Product[] = [
         inStock: 33
     },
     {
-        id: 'PRD0004',
+        id: 'PRD0006',
+        name: 'Собаця чинить шкоду',
+        // tslint:disable-next-line:max-line-length
+        shortDescription: 'Казочка про те як Собацю підставили на чужині кляті ...',
+        description: `<b>Футболки</b>
+        <ul>
+        <li>Склад: льон 90%, віскоза 10%</li>
+        <li>Ручна робота</li>
+        <li>Гарний настрій гарантовано</li>
+        </ul>`,
+        // tslint:disable-next-line:max-line-length
+        logo: './assets/images/trouble_2.jpg',
+        // tslint:disable-next-line:max-line-length
+        images: ['./assets/images/trouble_1.jpg', './assets/images/trouble_2.jpg'],
+        options: {color: ['#000000', '#ffffff']},
+        price: {uah: '399 грн', usd: '$20'},
+        inStock: 33
+    },
+    {
+        id: 'PRD0007',
         name: 'Це Торба!',
         // tslint:disable-next-line:max-line-length
         shortDescription: 'Зручна, містка, симпатична та гігієнінічно чиста, дружня до довкілля, витривала до довгого використання Торбинка',

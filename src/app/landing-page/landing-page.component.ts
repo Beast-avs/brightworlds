@@ -7,8 +7,10 @@ import { Observable } from 'rxjs';
   templateUrl: './landing-page.component.html'
 })
 export class LandingPageComponent implements OnInit {
-  private cities: Observable<any>;
-  private offices: Observable<any>;
+  public cities: Observable<any>;
+  public offices: Observable<any>;
+
+  public products: Observable<any>;
 
   constructor(
     private httpService: HttpClientService
@@ -23,6 +25,16 @@ export class LandingPageComponent implements OnInit {
   OnLoadOfficesByCity(cityRef: string) {
     this.httpService.getOfficesInCityNP(cityRef).subscribe(
       offices => this.offices = offices
+    );
+  }
+
+  OnLoadProducts() {
+    console.log('OnLoadProducts');
+    this.httpService.getProducts().subscribe(
+      products => {
+        // console.log(products);
+        this.products = products;
+      }
     );
   }
 
