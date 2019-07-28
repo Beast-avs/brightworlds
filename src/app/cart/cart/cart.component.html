@@ -1,24 +1,126 @@
 <div class="container">
-    <h3>Try to use here modal for checkout</h3>
-        <div class="row">
+    <div class="row">
         <div class="col">
+            <p class="h5"><span class="badge badge-danger">При замовленні двох одиніць будь-яких товірів Торба у подарунок!</span></p>
             <ul class="list-group">
                 <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let item of items">
-                        {{item.product.name}}
-                        <img src="/assets/{{item.product.images[0]}}" width="50" />
-                        {{item.product.price.uah}}
-                        <span class="badge badge-pill badge-danger" (click)="OnQuantityDecrease(item)">-</span><span class="badge badge-primary badge-pill">{{item.quantity}}</span><span class="badge badge-pill badge-success" (click)="OnQuantityIncrease(item)">+</span>
+                    {{item.product.name}}
+                    <img src="{{item.product.logo}}" width="50" />
+                    <p [innerHtml]="item.product.price.uah"></p>
+                    <span class="badge badge-pill badge-danger" (click)="OnQuantityDecrease(item)">-</span><span class="badge badge-primary badge-pill">{{item.quantity}}</span><span class="badge badge-pill badge-success" (click)="OnQuantityIncrease(item)">+</span>
                 </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center"><p class="h5">Разом: {{total}}</p></li>
             </ul>
         </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <button type="button" class="btn btn-secondary float-left mt-2" [routerLink]="'/products'">Повернутися</button>
+            <button type="button" class="btn btn-secondary mr-2 mt-2" (click)="OnCartClear()">Видалити все з кошика</button>
+            <!-- <h5>Разом: {{total}}</h5> -->
+            <!-- <a class="btn btn-primary" [routerLink]="'/checkout'">Оформити попереднє замовлення</a> -->
+            <button type="button" class="btn btn-success float-right mt-2" data-toggle="modal" data-target="#checkout">Оформити попереднє замовлення</button>
+        <!-- </div> -->
+        <!-- <div class="col"> -->
         </div>
-        <div class="row">
-            <div class="col">
-                <h5>Разом: {{total}}</h5>
-                <a class="btn btn-primary" [routerLink]="'/checkout'">Оформити</a>
-            </div>
-            <div class="col">
-                <a class="btn btn-primary" (click)="OnCartClear()">Видалити все з кошика</a>
+    </div>
+
+    <div class="modal fade" id="checkout" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <p class="h5 modal-title" id="exampleModalLabel">Оформлення замовлення</p>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p class="h4">Додати перевірку заповнення полів</p>
+                    <!-- Форма замовлення -->
+                    <form>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="name">Ім'я</label>
+                                <input type="text" class="form-control" id="name" placeholder="Тарас">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="surname">Прізвище</label>
+                                <input type="text" class="form-control" id="surname" placeholder="Шевченко">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Телефон</label>
+                            <input type="text" class="form-control" id="phone" placeholder="+380891234567">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <!-- <label for="city">Місто</label>
+                                <select id="city" class="form-control">
+                                    <option selected>Моє місто</option>
+                                    <option *ngFor="let city of cities">{{city.Description}}</option>
+                                </select> -->
+                                <label for="city">Місто</label>
+                                <input type="text" class="form-control" id="city" placeholder="Канів">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <!-- <label for="office">Відділення</label>
+                                <select id="office" class="form-control" (click)="OnLoadOfficesByCity('Київ')">
+                                    <option selected>Найближче до мене</option>
+                                    <option *ngFor="let office of offices">{{office.Description}}</option>
+                                </select> -->
+                                <label for="office">Відділення Нової Пошти</label>
+                                <input type="text" class="form-control" id="office" placeholder="Номер відділення">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="isCallBack">
+                                <label class="form-check-label" for="isCallBack">
+                                    Треба передзвонити?
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <legend class="col-form-label">Форма оплати</legend>
+                            <div class="col">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="gridRadios" id="paymentMethodCash" value="cash" checked (click)="paymentMethod='cash'">
+                                    <label class="form-check-label" for="paymentMethodCash">
+                                        Наложений платіж
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="gridRadios" id="paymentMethodCard" value="card" (click)="paymentMethod='card'">
+                                    <label class="form-check-label" for="card">
+                                        Картою
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <p class="h5 text-danger" *ngIf="paymentMethod=='card'">
+                                    Реквізити карти будуть надані під час опрацювання замовлення
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col">
+                                <label for="comment">Коментар</label>
+                                <textarea class="form-control" id="comment" rows="3"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col">
+                                <button type="submit" class="btn btn-success float-right mt-2">Замовити</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- <div class="modal-footer"> -->
+                    <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                <!-- </div> -->
             </div>
         </div>
     </div>
+
+</div>

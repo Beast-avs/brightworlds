@@ -1,23 +1,25 @@
 <div class="container">
-    <div class="row">
+    <!-- <div class="row">
         <div class="col w-100">
             <h3 class="text-center">Перелік товарів</h3>
         </div>
-    </div>
+    </div> -->
     <div class="row">
-        <div class="card border-primary mb-3 mx-1" style="width: 20rem;" *ngFor="let product of products | async">
-            <h3 class="card-header mx-auto text-center">
-                {{product.name}}
-            </h3>    
-            <img src="{{product.logo}}" class="card-img-top" alt="{{product.photo_alt}}" />
+        <div class="card border-sucess mb-3 mx-1 " style="width: 20rem;" *ngFor="let product of products | async">
+            <a [routerLink]="['/product', product.id]">
+                <img src="{{product.logo}}" class="card-img-top" alt="{ {product.photo_alt}}" />
+            </a>
             <div class="card-body">
-                <p class="card-text">{{product.shortDescription}}</p>
+                <h5 class="card-title text-center">{{product.name}}</h5>    
+                <p class="card-text" [innerHTML]="product.description"></p>
+                <!-- <a [routerLink]="['/product', product.id]" class="stretched-link">Подивитися >></a> -->
+                <p class="card-text"><a class="text-success" [routerLink]="['/product', product.id]">Подивитися >></a></p>
+                <button type="button" class="btn btn-success" (click)="OnAddCart(product)" style="position: relative;">Напередзамовлення</button>
                 <p class="card-text text-right"><small class="text-muted">В наявності {{product.inStock}}</small></p>
-                <a class="btn btn-primary" (click)="OnAddCart(product)">Додати до кошика</a>
-                <a [routerLink]="['/product', product.id]" class="btn btn-secondary">Подивитися ({{product.id}})</a>
             </div>
-            <div class="card-footer">
-                <h5>{{product.price.uah}}</h5>
+            <div claSS="card-footer">
+                <!-- <p class="card-text text-danger"><s>399 грн</s>  {{product.price.uah}}</p> -->
+                <p class="card-text text-danger" [innerHTML]="product.price.uah"></p>
             </div>
         </div>
     </div>

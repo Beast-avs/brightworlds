@@ -11,6 +11,8 @@ export class CartComponent implements OnInit {
   public items: Item[] = [];
   public total = 0;
 
+  public paymentMethod: string;
+
   constructor(
       private cartService: CartService
   ) { }

@@ -1,1 +1,50 @@
 /* You can add global styles to this file, and also import other style files */
+/* .fa {
+    padding: 20px;
+    font-size: 30px;
+    width: 50px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+  }
+  
+  .fa:hover {
+      opacity: 0.7;
+  }
+  
+  .fa-facebook {
+    background: #3B5998;
+    color: white;
+  }
+  
+  .fa-instagram {
+    background: #125688;
+    color: white;
+  } */
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  /* height: 100px; */
+  /* width: 100px; */
+  /* outline: black; */
+  /* background-size: 100%, 100%; */
+  /* border-radius: 50%; */
+  /* border: 1px solid black; */
+  /* background-image: none !important; */
+  /* color: green !important; */
+  background-color: #00cc00 !important;
+}
+
+.carousel-indicators li {
+    background-color: #00cc00 !important;
+}
+
+/* .carousel-control-next-icon {
+    background-image : url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%2300cc00' viewBox='0 0 8 8'%3E%3Cpath d='M1.5 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
+    color: black;
+} */
+
+/* .carousel-item-img { */
+    /* height: 600px !important; */
+    /* max-height: 600px !important; */
+/* } */

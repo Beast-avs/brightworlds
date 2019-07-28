@@ -1,44 +1,46 @@
 <div class="container" *ngIf="product$ | async as product">
     <div class="row justify-content-md-center">
         <div class="col">
-            <h3>{{product.name}}</h3>
-            <h4>{{product.shortDescription}}</h4>
-            <h5>{{product.price.uah}}</h5>
+            <p class="h3">{{product.name}}</p>
+            <p class="lead">{{product.shortDescription}}</p>
+            <p class="h5 text-danger" [innerHtml]="product.price.uah"></p>
+            <p class="h5"><span class="badge badge-danger">Цей товар доступний за попереднім замовленням</span></p>
         </div>
     </div>
-    <div class="row">
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
-                <div class="carousel-item" *ngFor="let image of product.images let i=index" [ngClass]="{'active': i==0}">
-                    <img [src]="image" class="d-block w-100" alt="..." >
-                    <!-- style="width:900px; height:600px;"> -->
+    <div class="row justify-content-center">
+        <div class="col">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" *ngFor="let image of product.images let j=index" [ngClass]="{'active': i==0}"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item" *ngFor="let image of product.images let i=index" [ngClass]="{'active': i==0}">
+                        <img [src]="image" class="carousel-item-img img-fluid center-block" alt="..." />
+                        <!-- <img [src]="image" class="carousel-item-img img-fluid center-block" alt="..." style="height: 600px !important" style="max-height: 600px !important"> -->
+                        <!-- style="width:900px; height:600px;"> -->
+                    </div>
                 </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Попередня</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Наступна</span>
+                </a>
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Попередня</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Наступна</span>
-            </a>
         </div>
     </div>
     <div class="row">
-        <div class="col" [innerHTML]="product.description"></div>
         <div class="col">
-            <a class="btn btn-secondary" (click)="OnAddCart(product)">Додати до кошика</a>
+            <p class="" [innerHTML]="product.description"></p>
         </div>
+    </div>
+    <div class="row">
         <div class="col">
-            <a [routerLink]="'/cart'" class="btn btn-primary">У кошик</a>
-        </div>
-        <div class="col">
-            <a class="btn btn-secondary" (click)="gotoProducts(product)">Повернутися</a>
+            <button type="button" class="btn btn-secondary mr-2" (click)="gotoProducts(product)">Повернутися</button>
+            <button type="button" [routerLink]="'/cart'" class="btn btn-success mr-2">У кошик</button>
+            <button type="button" class="btn btn-secondary mr-2" (click)="OnAddCart(product)">Додати до кошика</button>
         </div>
     </div>
 </div>
