@@ -1,0 +1,41 @@
+<div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col">
+                <p class="h3">{{bonus.name}}</p>
+                <p class="lead">{{bonus.shortDescription}}</p>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" *ngFor="let image of bonus.images let j=index" [ngClass]="{'active': i==0}"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item" *ngFor="let image of bonus.images let i=index" [ngClass]="{'active': i==0}">
+                            <img [src]="image" class="carousel-item-img img-fluid center-block" alt="..." />
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Попередня</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Наступна</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p class="" [innerHTML]="bonus.description"></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <a type="button" class="btn btn-secondary mr-2" [routerLink]="'/products'">Повернутися</a>
+            </div>
+        </div>
+    </div>
+    

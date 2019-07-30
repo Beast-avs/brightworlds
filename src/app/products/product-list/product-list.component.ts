@@ -23,7 +23,6 @@ export class ProductListComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    // this.getProducts();
     this.products = this.route.paramMap.pipe(
       switchMap(params => {
         // (+) before `params.get()` turns the string into a number
@@ -35,7 +34,6 @@ export class ProductListComponent implements OnInit {
 
   getProducts(): void {
     this.productService.getProducts().subscribe(products => this.prods = products);
-    // this.products = this.productService.getProducts();
   }
 
   OnAddCart(product: Product): void {

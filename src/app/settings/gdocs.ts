@@ -12,9 +12,14 @@ export class GDocs {
     // tslint:disable-next-line:max-line-length
     tockenMyReadonly = '4/jwHuK0g0s7gUQf3h0r8nDznvvSpfOze_1-uw3whRmmoZzcBElAZqC7mVsK0EiKbLHkNP7Y2XOPxDCzb2h-ZK55A';
 
-    clientId = '933109428849-jvv5i57f4it53sjd3cbbqgujr0qkrvt9.apps.googleusercontent.com';
-    clientSecret = 'oFXrTazFV7N03g7CbRg2lpuC';
+    clientId =
+    // '933109428849-jvv5i57f4it53sjd3cbbqgujr0qkrvt9.apps.googleusercontent.com';
+    '978142608898-p6p7vqpolbu1qblq86sljb2afdee1ke6.apps.googleusercontent.com';
+    clientSecret =
+    // 'oFXrTazFV7N03g7CbRg2lpuC';
+    'XdHfDNP61rleOLr_m8_OjW2U';
     apiKey = 'AIzaSyBtUw4aH3h7aOPS4ppknY8mc6vu9ZV_4VE';
+    apiKey2019jul29 = 'AIzaSyAYhgRDZYNNas8LKqYZ8Pa1mOHwgWtRdS4';
 
     format = '';
 

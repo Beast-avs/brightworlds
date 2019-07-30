@@ -1,23 +1,29 @@
 <nav class="navbar navbar-expand-lg">
   <a class="navbar-brand" href="#">
-    <img src="/assets/images/sobacsia_logo.jpg" width="50" height="50" alt="">
+    <img src="/assets/images/sobacsia_logo.jpg" width="50px" height="50px" alt="">
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+    <span class="navbar-toggler-icon"></span>
   </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/products">Товари</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/cart" >Кошик</a>
-        </li>
-      </ul>
-      <ul class="nav navbar-nav ml-auto">
-        <li><a href="#" class="nav-link"><i class="fa fa-camera-retro fa-lg"></i></a></li>
-        <li><a href="#" class="nav-link"><i class="fa fa-facebook-square fa-lg"></i></a></li>
-      </ul>
-    </div>
-  </nav>
+  <!-- <div class="vl"></div> -->
+  <!-- <img src="/assets/" class="ml-3" width="100px" height="50px" /> -->
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link text-success" routerLink="/products">Товари</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-success" routerLink="/cart" >Кошик</a>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav ml-auto">
+      <li>
+        <a href="https://www.instagram.com/worlds.bright/" class="nav-link text-success"><i class="fa fa-camera-retro fa-lg"></i></a>
+      </li>
+      <li>
+        <a href="https://www.facebook.com/Bright-worlds-415207245998445/" class="nav-link text-success"><i class="fa fa-facebook-square fa-lg"></i></a>
+      </li>
+    </ul>
+  </div>
+</nav>
 <router-outlet></router-outlet>

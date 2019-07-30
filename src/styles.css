@@ -48,3 +48,8 @@
     /* height: 600px !important; */
     /* max-height: 600px !important; */
 /* } */
+
+.vl {
+  border-left: 5px solid green;
+  height: 50px;
+}

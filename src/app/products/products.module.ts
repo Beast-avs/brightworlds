@@ -5,12 +5,14 @@ import { ProductsRoutingModule } from './products-routing.module';
 
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
+import { BonusComponent } from './bonus/bonus.component';
 
 
 @NgModule({
   declarations: [
     ProductDetailsComponent,
-    ProductListComponent
+    ProductListComponent,
+    BonusComponent
   ],
   imports: [
     CommonModule,
