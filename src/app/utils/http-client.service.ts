@@ -37,10 +37,9 @@ export class HttpClientService {
         modelName: 'Address',
         calledMethod: 'getWarehouses',
         methodProperties: {
-          // CityRef: city
           CityDescription: cityName
         },
-        apiKey: '6f739788bbe4871e789e460f48ea9866' // this.np.getAPIKey()
+        apiKey: '6f739788bbe4871e789e460f48ea9866'
     };
 
     return this.http.post(
@@ -64,7 +63,6 @@ export class HttpClientService {
       {headers: hdr}
     ).pipe(map(
       data => {
-        // console.log(JSON.parse(JSON.stringify(data)).values);
         const ar = JSON.parse(JSON.stringify(data)).values;
         // skip header
         const ar2 = [];
@@ -73,21 +71,23 @@ export class HttpClientService {
             ar2.push(ar[i]);
           }
         }
-        // console.log(ar2);
         return ar2;
       }
     ));
     }
 
   setCheckoutRequest(data: string): Observable<any> {
+    // console.log(data);
     return this.http.post(
       'https://script.google.com/macros/s/AKfycbxAFYuc_AGK9h6RUSRFZnGSo9w7U0lp1BHDqhQaWrumQgJrL6sw/exec',
       data,
       {headers: new HttpHeaders({
-        'Content-Type': 'application/x-www-form-urlencoded',
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+        'Content-Type': 'text/plain'
       })}
     ).pipe(map(
       result => {
+        // console.log(result);
         return result;
       },
       error => {

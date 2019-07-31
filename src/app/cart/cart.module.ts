@@ -6,13 +6,10 @@ import { FormsModule } from '@angular/forms';
 
 import { CartRoutingModule } from './cart-routing.module';
 import { CartComponent } from './cart/cart.component';
-import { CheckoutFormComponent } from './checkout-form/checkout-form.component';
-
 
 @NgModule({
   declarations: [
-    CartComponent,
-    CheckoutFormComponent
+    CartComponent
   ],
   imports: [
     NgbModule,

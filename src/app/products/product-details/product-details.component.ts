@@ -5,6 +5,7 @@ import { switchMap } from 'rxjs/operators';
 
 import { Product } from '../product';
 import { ProductService } from '../product.service';
+import { CartService } from 'src/app/cart/cart.service';
 
 @Component({
   selector: 'app-product-details',
@@ -17,7 +18,8 @@ export class ProductDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private productService: ProductService
+    private productService: ProductService,
+    private cartService: CartService
   ) { }
 
   ngOnInit() {
@@ -29,7 +31,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   OnAddCart(product: Product): void {
-    // const onAddResult = this.cartService.addToCart(this);
+    const onAddResult = this.cartService.addToCart(product);
   }
 
   gotoProducts(product: Product) {

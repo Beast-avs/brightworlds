@@ -44,7 +44,7 @@ export class CartComponent implements OnInit {
   }
 
   OnCartCheckout(): void {
-    this.closeBtn.nativeElement.click();
+    // this.closeBtn.nativeElement.click();
     this.checkoutForm.get('items').setValue(this.items);
 
     this.httpService.setCheckoutRequest(this.checkoutForm.value).subscribe(result => {
@@ -55,7 +55,7 @@ export class CartComponent implements OnInit {
   OnRemoveFromCart(item: Item): void {
       const onRemoveResult = this.cartService.removeFromCart(item);
       if (onRemoveResult === true) {
-          this.message = 'Item ' + item.product.name + ' has been removed from the cart';
+          this.message = 'Товар ' + item.product.name + ' видалено з кошика';
           for (let i = 0; i < this.items.length; i++) {
               if (this.items[i].product.id === item.product.id) {
                   setTimeout(() => {
@@ -68,7 +68,9 @@ export class CartComponent implements OnInit {
               }
           }
       } else {
-          this.message = 'There is an error occured: ' + onRemoveResult;
+          this.message = 'Ой-йой, не вдалося видалити товар';
+          console.log('Unable to remove ' + item.product.id + ' from cart');
+          console.log(onRemoveResult);
       }
   }
 
@@ -90,7 +92,9 @@ export class CartComponent implements OnInit {
           }
           this.message = 'The cart has been cleared. Continue shopping';
       } else {
-          this.message = 'There is an error with cart clear: ' + onClearCart;
+          this.message = 'Ой-йой, не вдалося видалити товар';
+          console.log('Unable to clear cart');
+          console.log(onClearCart);
       }
   }
 }

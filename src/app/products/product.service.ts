@@ -21,7 +21,6 @@ export class ProductService {
         return this.getProducts().pipe(
             map(
                 (products: Product[]) => {
-                        console.log(products);
                         return products.find(product => product.id === id);
                     }
                 )
