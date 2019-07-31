@@ -64,6 +64,6 @@ export class CartService {
 
   clearCart(): boolean {
     localStorage.removeItem('cart');
-    return false;
+    return true;
   }
 }

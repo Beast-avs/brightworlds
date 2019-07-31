@@ -9,7 +9,7 @@
             <div class="col">
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
-                        <li data-target="#carouselExampleIndicators" data-slide-to="0" *ngFor="let image of bonus.images let j=index" [ngClass]="{'active': i==0}"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" *ngFor="let image of bonus.images let j=index" [ngClass]="{'active': j==0}"></li>
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item" *ngFor="let image of bonus.images let i=index" [ngClass]="{'active': i==0}">

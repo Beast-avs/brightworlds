@@ -78,4 +78,21 @@ export class HttpClientService {
       }
     ));
     }
+
+  setCheckoutRequest(data: string): Observable<any> {
+    return this.http.post(
+      'https://script.google.com/macros/s/AKfycbxAFYuc_AGK9h6RUSRFZnGSo9w7U0lp1BHDqhQaWrumQgJrL6sw/exec',
+      data,
+      {headers: new HttpHeaders({
+        'Content-Type': 'application/x-www-form-urlencoded',
+      })}
+    ).pipe(map(
+      result => {
+        return result;
+      },
+      error => {
+        return error;
+      }
+    ));
+  }
 }
