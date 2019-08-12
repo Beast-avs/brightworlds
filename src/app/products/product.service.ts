@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 
 import { Product } from './product';
 import { PRODUCTS } from './mock-products';
+import { BONUSES } from './mock-bonuses';
 
 @Injectable({
     providedIn: 'root',
@@ -25,5 +26,9 @@ export class ProductService {
                     }
                 )
           );
+    }
+
+    getBonuses(): Observable<Product[]> {
+        return of(BONUSES);
     }
 }

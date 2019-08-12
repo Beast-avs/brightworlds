@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../product';
 import { ProductService } from '../product.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { CartService } from 'src/app/cart/cart.service';
@@ -19,7 +19,8 @@ export class ProductListComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private cartService: CartService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
     ) { }
 
   ngOnInit() {
@@ -41,6 +42,10 @@ export class ProductListComponent implements OnInit {
     const onSuccess = 'Prodcut ' + product.name + ' has been added into the cart';
     const onError = 'There is an error occured: ' + onAddResult;
     this.message = ((onAddResult === true) ? onSuccess : onError);
-}
+  }
+
+  GoToCart(): void {
+    this.router.navigate(['/cart']);
+  }
 
 }

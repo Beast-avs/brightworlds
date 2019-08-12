@@ -1,6 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col">
+            <ngb-alert *ngIf="!message.isClose" [type]="message.type" (close)="message.isClose = true">{{ message.text }}</ngb-alert>
             <p class="h5"><span class="badge badge-danger">При замовленні двох одиніць будь-яких товірів Торба у подарунок!</span></p>
             <ul class="list-group">
                 <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let item of items">
@@ -80,12 +81,12 @@
                             <legend class="col-form-label">Форма оплати</legend>
                             <div class="col">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="paymentMethodCash" id="paymentMethodCash" formControlName="paymentMethodCash" value="cash" checked (click)="paymentMethod='cash'">
+                                    <input class="form-check-input" type="radio" name="paymentMethod" id="paymentMethodCash" formControlName="paymentMethod" value="cash" (click)="paymentMethod='cash'">
                                     <label class="form-check-label" for="paymentMethodCash">Наложений платіж</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="paymentMethodCard" id="paymentMethodCard" formControlName="paymentMethodCard" value="card" (click)="paymentMethod='card'">
-                                    <label class="form-check-label" for="card">Картою</label>
+                                    <input class="form-check-input" type="radio" name="paymentMethod" id="paymentMethodCard" formControlName="paymentMethod" value="card" (click)="paymentMethod='card'">
+                                    <label class="form-check-label" for="paymentMethodCard">Картою</label>
                                 </div>
                             </div>
                             <div class="col">
@@ -110,6 +111,4 @@
             </div>
         </div>
     </div>
-
-    <p class="h4">{{message}}</p>
 </div>

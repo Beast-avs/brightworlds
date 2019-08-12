@@ -77,7 +77,6 @@ export class HttpClientService {
     }
 
   setCheckoutRequest(data: string): Observable<any> {
-    // console.log(data);
     return this.http.post(
       'https://script.google.com/macros/s/AKfycbxAFYuc_AGK9h6RUSRFZnGSo9w7U0lp1BHDqhQaWrumQgJrL6sw/exec',
       data,
