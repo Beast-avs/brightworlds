@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import { ToastrService } from 'ngx-toastr';
 
 import { Product } from '../product';
 import { ProductService } from '../product.service';
@@ -19,7 +20,8 @@ export class ProductDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private productService: ProductService,
-    private cartService: CartService
+    private cartService: CartService,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit() {
@@ -32,13 +34,15 @@ export class ProductDetailsComponent implements OnInit {
 
   OnAddCart(product: Product): void {
     const onAddResult = this.cartService.addToCart(product);
+    if (onAddResult) {
+      this.toastr.success('Товар ' + product.name + ' додано до кошика', '', {timeOut: 3000, positionClass: 'toast-bottom-right'});
+    } else {
+      this.toastr.error('Не можу додати товар ' + product.name + ' до кошика', '', {timeOut: 3000});
+    }
   }
 
   gotoProducts(product: Product) {
     const productId = product ? product.id : null;
-    // Pass along the hero id if available
-    // so that the HeroList component can select that hero.
-    // Include a junk 'foo' property for fun.
     this.router.navigate(['/products', { id: productId }]);
   }
 

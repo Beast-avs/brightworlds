@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { CartService } from 'src/app/cart/cart.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-product-list',
@@ -20,7 +21,8 @@ export class ProductListComponent implements OnInit {
     private productService: ProductService,
     private cartService: CartService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
     ) { }
 
   ngOnInit() {
@@ -42,6 +44,11 @@ export class ProductListComponent implements OnInit {
     const onSuccess = 'Prodcut ' + product.name + ' has been added into the cart';
     const onError = 'There is an error occured: ' + onAddResult;
     this.message = ((onAddResult === true) ? onSuccess : onError);
+    if (onAddResult) {
+      this.toastr.success('Товар ' + product.name + ' додано до кошика', '');
+    } else {
+      this.toastr.error('Не можу додати товар ' + product.name + ' до кошика', '');
+    }
   }
 
   GoToCart(): void {

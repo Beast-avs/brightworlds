@@ -1,0 +1,66 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <ul class="list-unstyled">
+                <!-- About -->
+                <li class="media my-4">
+                        <img src="..." alt="..." class="img-thumbnail">
+                        <div class="media-body">
+                            <h5 class="mt-0 mb-1">Про художника</h5>
+                            <p>Привіт! Мене звати Яркий. Я намалював цю історію ...чому пришла ідея намалювати цю історію?</p>
+                            <p>Чому я малюю?</p>
+                            <p>Тому я вигадую різні світи та персонажів цих світів. Хтось трапляється тількі епізодично, такби мовити, я їх запрошую зіграти свою роль один раз, а потім відпускаю жити власним життям. Декому настільки довподоби мої світи, що вони залишаються там жити надовго і про них я можу розповісти багато історій.</p>
+                            <p>Саме так, одного весняного дня до мене увірвався Собаця із своєю історією...</p>
+                        </div>
+                    </li>
+                <!-- Comics -->
+                <li class="media">
+                    <a data-toggle="modal" data-target="#exampleModal">
+                        <img [src]="comicsLogo" style="height: 20rem !important" alt="Подивитися" class="img-thumbnail">
+                    </a>
+                    <div class="media-body">
+                        <h5 class="mt-0 mb-1">Пригоди Собаці у Всесвіті</h5>
+                        <p>Собаця жаив із Безхатьком скільки себе пам'ятає. Він полюбив цього простого та доброго чолов'ягу, який невідомо звідки та яким чином опинився на вулиці. Та Собаця не знав справжньої історії свого друга.</p>
+                        <p>Колись давно Безхатько був вченим, що працював в одному із численних Київськіх НДІ. Він вважав, що працює над технологією, яка допоможе порозумітися людям та зітре перепони, що заважають знайти порозуміння. Але, добрий чоловік не знав, що проект його засекречено, а результат його роботи загрожує людству. Дізнавшись про небезпеку, він одразу повідомив керувництво. Та де там шукати правди! Чиновники наполегливо попросили припнути язика та працювати й далі, погрожуючи розправою у разі непокори. Безхатькові не треба було повторювати двучі, і одного вечора він залишив НДІ прихопивши деякі документи, стосовно проекта. МАючи на меті поширити інформацію про загрозу, він відправив папери до редакції газети. Після опублікування сенсаційного матерілу, НДІ перестало вести розробку, але почало пошуки Безхатька.</p>
+                        <p>З того часу він переховується під виглядом бомжа. Одного разу він знайшов цуценя, який коперсався у купі із старими елктронними пристроями (треба зауважити, що електроніка була завжди пристрастю Безхатька), та виховав його. Так вони разом стали займатися електронікою та надавати друге життя приладам. Одного разу Собаця приніс якийсь дивний пристрій. Безхатько полагодив це, виявидося, що це якийсь дуже дивний маяк. Через деякий час прибув летаючий апарат і разом із пристроєм забрала Собацю. Що сталося далі, дивіться на принтах футболок.</p>
+                    </div>
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                                        <ol class="carousel-indicators">
+                                            <li data-target="#carouselExampleIndicators" data-slide-to="0" *ngFor="let imgC of comicsImages let j=index" [ngClass]="{'active': j==0}"></li>
+                                        </ol>
+                                        <div class="carousel-inner">
+                                            <div class="carousel-item" *ngFor="let imgC of comicsImages let i=index" [ngClass]="{'active': i==0}">
+                                                <img [src]="imgC" class="carousel-item-img img-fluid center-block" alt="..." />
+                                            </div>
+                                        </div>
+                                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="sr-only">Попередня</span>
+                                        </a>
+                                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="sr-only">Наступна</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <!-- Others -->
+                <li class="media">
+                    <img src="..." alt="..." class="img-thumbnail">
+                    <div class="media-body">
+                        <h5 class="mt-0 mb-1">Інші роботи</h5>
+                        <p>Не можу не згадати комікс про Капітана Сіда, чиї подорожі Простором та часом карколомні та повні неймовірних пригод. Небезпечні пригоди добрих та щирих Крис-героїв, що приходять на допомогу нужденним. Різноманітні створіння, що живуть своїм помірним життям, та після знайомства залишаються на згадку у вигляді замальовок та ескізів, та чекають своєї черги, щоб розповісти свою історію</p>
+                        <p>Та не тільки втілені у життя комікси із чудернацькими створіннями! Іще я люблю переосмислювати старі добрі казки. Як от це <a href="http://elisapeyron.com/kolobok/" target="_blank">про Колобка</a>.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

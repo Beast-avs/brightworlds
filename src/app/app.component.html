@@ -3,26 +3,33 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <a class="navbar-brand" routerLink="/products">
-    <img src="./assets/images/logo.jpg" height="50px" alt="">
+    <img src="./assets/images/logo.jpg" height="50px" alt="Про художника та Собацю" title="Перелік доступних товарів"/>
   </a>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link text-success" routerLink="/products">Товари</a>
+        <a class="nav-link text-success" routerLink="/about" title="Про художника та Собацю"><h5 class="align-middle"><u>Про Собацю</u></h5></a>
       </li>
-      <li class="nav-item">
+      <!-- <li class="nav-item">
+        <a class="nav-link text-success" routerLink="/products" title="Про художника та Собацю"><h5 class="align-middle"><u>Футболки</u></h5></a>
+      </li> -->
+      <!-- <li class="nav-item">
         <a class="nav-link text-success" routerLink="/cart" >Кошик</a>
-      </li>
+      </li> -->
     </ul>
     <ul class="nav navbar-nav ml-auto">
+        <li><a class="nav-link text-success" routerLink="/cart" title="Перейти до кошика">
+            <i class="fa fa-shopping-cart fa-2x"></i>
+            <!-- <span class="badge badge-pill badge-danger">{{(cartService.allItemsInCart$ | async).length}}</span> -->
+          </a></li>
         <li class="nav-item">
             <p class="text-success">&#60;beta&#62;</p>
           </li>
       <li>
-        <a href="https://www.instagram.com/worlds.bright/" class="nav-link text-success"><i class="fa fa-camera-retro fa-lg"></i></a>
+        <a href="https://www.instagram.com/worlds.bright/" class="nav-link text-success"><i class="fa fa-instagram fa-2x" title="Інстаграм Собаці"></i></a>
       </li>
       <li>
-        <a href="https://www.facebook.com/Bright-worlds-415207245998445/" class="nav-link text-success"><i class="fa fa-facebook-square fa-lg"></i></a>
+        <a href="https://www.facebook.com/Bright-worlds-415207245998445/" class="nav-link text-success"><i class="fa fa-facebook-square fa-2x" title="Собаця у фейсбуці"></i></a>
       </li>
     </ul>
   </div>

@@ -4,7 +4,6 @@
             <p class="h3">{{product.name}}</p>
             <p class="lead">{{product.shortDescription}}</p>
             <p class="h5 text-danger" [innerHtml]="product.price.uah"></p>
-            <p class="h5"><span class="badge badge-danger">Цей товар доступний за попереднім замовленням</span></p>
         </div>
     </div>
     <div class="row justify-content-center">
@@ -16,8 +15,6 @@
                 <div class="carousel-inner">
                     <div class="carousel-item" *ngFor="let image of product.images let i=index" [ngClass]="{'active': i==0}">
                         <img [src]="image" class="carousel-item-img img-fluid center-block" alt="..." />
-                        <!-- <img [src]="image" class="carousel-item-img img-fluid center-block" alt="..." style="height: 600px !important" style="max-height: 600px !important"> -->
-                        <!-- style="width:900px; height:600px;"> -->
                     </div>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -38,8 +35,8 @@
     </div>
     <div class="row">
         <div class="col">
-            <button type="button" class="btn btn-secondary mr-2" (click)="gotoProducts(product)">Повернутися</button>
-            <button type="button" class="btn btn-success mr-2" (click)="OnAddCart(product)">Додати до кошика</button>
+            <button type="button" class="btn btn-secondary mr-2" (click)="gotoProducts(product)" onclick="this.blur();">&#8592; Повернутися</button>
+            <button type="button" class="btn btn-success mr-2" (click)="OnAddCart(product)" onclick="this.blur();">&#9734; У кошик</button>
         </div>
     </div>
 </div>
