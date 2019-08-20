@@ -4,7 +4,6 @@
             <ngb-alert *ngIf="!message.isClose" [type]="message.type" (close)="message.isClose = true">{{ message.text }}</ngb-alert>
             <div class="clearfix">
                 <div class="float-left"><h3 class="align-items-left">Мій кошик</h3></div>
-                <button type="button" class="btn btn-success float-right mt-2" data-toggle="modal" data-target="#checkout" onclick="this.blur()" [disabled]="(items.length &lt; 1)">&#9734; Оформити замовлення {{items.length}}</button>
             </div>
             <p class="h5 text-center"><span class="badge badge-danger">При замовленні двох футболок <a [routerLink]="['/bonus']" class="text-warning"><u>Торба</u></a> у подарунок!</span></p>
             <table class="table table-striped">
@@ -43,9 +42,12 @@
         </div>
     </div>
     <div class="row">
-        <div class="col">
+        <div class="col float-left">
             <button type="button" class="btn btn-secondary float-left mt-2" [routerLink]="'/products'" onclick="this.blur();">&#8592; Повернутися</button>
-            <button type="button" class="btn btn-secondary mr-2 mt-2 float-right" (click)="OnCartClear()" onclick="this.blur();">&#215; Видалити все з кошика</button>
+            <button type="button" class="btn btn-secondary mr-2 mt-2 float-right" (click)="OnCartClear()" onclick="this.blur();">&#215; Видалити кошик</button>
+        </div>
+        <div class="col float-right">
+            <button type="button" class="btn btn-success mt-2" data-toggle="modal" data-target="#checkout" onclick="this.blur()" [disabled]="(items.length &lt; 1)">&#9734; Оформити замовлення</button>
         </div>
     </div>
     <div class="modal fade" id="checkout" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

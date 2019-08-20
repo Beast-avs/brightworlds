@@ -20,8 +20,9 @@ export class CartComponent implements OnInit, OnDestroy {
     public message: any = {};
     public items: Item[] = [];
     public itemsS: Observable<Item[]>;
-    private total = 0;
-    private submitted = false;
+    public total = 0;
+    public submitted = false;
+    public paymentMethod;
 
 
     constructor(
@@ -88,6 +89,7 @@ export class CartComponent implements OnInit, OnDestroy {
         this.closeBtn.nativeElement.click();
         this.checkoutForm.get('items').setValue(this.items);
         this.message.isClose = false;
+
         // testing
         // const obj = {result: 'success', order: 'TEST_ORDER_#NUM', timestamp: '2019-Aug-09 23:45:43'};
         // this.message.timestamp = obj.timestamp;
@@ -95,6 +97,7 @@ export class CartComponent implements OnInit, OnDestroy {
         //     case 'success':
         //         this.message.type = 'success';
         //         this.message.text = 'Дякую за замовлення. Зараєстровано за номором ' + obj.order;
+        //         this.OnCartClear();
         //         break;
         //     case 'error':
         //         this.message.type = 'danger';
@@ -112,6 +115,7 @@ export class CartComponent implements OnInit, OnDestroy {
                 case 'success':
                     this.message.type = 'success';
                     this.message.text = 'Дякую за замовлення. Зараєстровано за номором ' + obj.order;
+                    this.OnCartClear();
                     break;
                 case 'error':
                     this.message.type = 'danger';
