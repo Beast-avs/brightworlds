@@ -120,7 +120,7 @@ export class CartComponent implements OnInit, OnDestroy {
                 case 'error':
                     this.message.type = 'danger';
                     this.message.text = 'Ой-йой! Якась помилка на сервері :(';
-                    console.log('Error when sending to server', obj);
+                    console.log('Error when sending to server. Error in response: ', obj);
                     break;
             }
         },
@@ -128,7 +128,7 @@ export class CartComponent implements OnInit, OnDestroy {
             setTimeout(() => this.message.isClose = true, 5000);
             this.message.type = 'danger';
             this.message.text = 'Ой-йой! Якась помилка на сервері :(';
-            console.log('Error when sending to server', this.message);
+            console.log('Error when sending to server. Response is not received yet. Error is: ', error);
             this.message.isClose = false;
         });
     }
