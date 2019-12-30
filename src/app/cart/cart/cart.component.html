@@ -1,28 +1,55 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <p class="h5"><span class="badge badge-danger">При замовленні двох одиніць будь-яких товірів Торба у подарунок!</span></p>
-            <ul class="list-group">
-                <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let item of items">
-                    {{item.product.name}}
-                    <img src="{{item.product.logo}}" width="50" />
-                    <p [innerHtml]="item.product.price.uah"></p>
-                    <span class="badge badge-pill badge-danger" (click)="OnQuantityDecrease(item)">-</span><span class="badge badge-primary badge-pill">{{item.quantity}}</span><span class="badge badge-pill badge-success" (click)="OnQuantityIncrease(item)">+</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between align-items-center"><p class="h5">Разом: {{total}}</p></li>
-            </ul>
+            <ngb-alert *ngIf="!message.isClose" [type]="message.type" (close)="message.isClose = true">{{ message.text }}</ngb-alert>
+            <div class="clearfix">
+                <div class="float-left"><h3 class="align-items-left">Мій кошик</h3></div>
+            </div>
+            <p class="h5 text-center"><span class="badge badge-danger">При замовленні двох футболок <a [routerLink]="['/bonus']" class="text-warning"><u>Торба</u></a> у подарунок!</span></p>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">Назва</th>
+                        <th scope="col">Ціна</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <td></td>
+                        <td><b>Разом:</b></td>
+                        <td colspan="2"><b>{{total}}</b></td>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    <tr class="align-middle" *ngFor="let item of items">
+                        <th scope="row"><img class="img-thumbnail" src="{{item.product.logo}}" width="75px" /></th>
+                        <td class="align-middle"><a *ngIf="item.product.options.type != 'bonus'" [routerLink]="['/product', item.product.id]">{{item.product.name}}</a>
+                        <a *ngIf="item.product.options.type == 'bonus'" [routerLink]="['/bonus']">{{item.product.name}}</a></td>
+                        <td class="align-middle">{{item.product.price.uah}}</td>
+                        <td class="align-middle" [attr.colspan]="(item.product.options.type != 'bonus') ? 1 : 2">
+                            <span class="align-middle" *ngIf="item.product.options.type != 'bonus'">
+                                <span class="badge" (click)="OnQuantityDecrease(item)"><i class="fa fa-minus"></i></span>&nbsp;<span class="badge badge-danger badge-pill">{{item.quantity}}</span>&nbsp;<span class="badge" (click)="OnQuantityIncrease(item)"><i class="fa fa-plus"></i></span>
+                            </span>
+                            <button *ngIf="item.product.options.type == 'bonus'" type="button" class="close" aria-label="Close" (click)="OnQuantityDecrease(item)">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
     <div class="row">
-        <div class="col">
-            <button type="button" class="btn btn-secondary float-left mt-2" [routerLink]="'/products'">Повернутися</button>
-            <button type="button" class="btn btn-secondary mr-2 mt-2" (click)="OnCartClear()">Видалити все з кошика</button>
-            <button type="button" class="btn btn-success float-right mt-2" data-toggle="modal" data-target="#checkout">Оформити попереднє замовлення</button>
-        <!-- </div> -->
-        <!-- <div class="col"> -->
+        <div class="col float-left">
+            <button type="button" class="btn btn-secondary float-left mt-2" [routerLink]="'/products'" onclick="this.blur();">&#8592; Повернутися</button>
+            <button type="button" class="btn btn-secondary mr-2 mt-2 float-right" (click)="OnCartClear()" onclick="this.blur();">&#215; Видалити кошик</button>
+        </div>
+        <div class="col float-right">
+            <button type="button" class="btn btn-success mt-2" data-toggle="modal" data-target="#checkout" onclick="this.blur()" [disabled]="(items.length &lt; 1)">&#9734; Оформити замовлення</button>
         </div>
     </div>
-
     <div class="modal fade" id="checkout" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -33,65 +60,107 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p class="h4">Додати перевірку заповнення полів</p>
                     <!-- Форма замовлення -->
                     <form [formGroup]="checkoutForm" (ngSubmit)="OnCartCheckout()">
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="name">Ім'я</label>
-                                <input type="text" class="form-control" id="name" formControlName="name" placeholder="Тарас">
+                                <input type="text" class="form-control" id="name" formControlName="name" placeholder="Тарас" [ngClass]="{'is-invalid': submitted && checkoutForm.controls.name.errors}">
+                                <div *ngIf="submitted && checkoutForm.controls.name.errors" class="alert alert-danger">
+                                    <div *ngIf="checkoutForm.controls.name.errors.required">
+                                        Введіть ім'я
+                                    </div>
+                                    <div *ngIf="checkoutForm.controls.name.errors.minlength">
+                                        Ім'я має бути довшим за 2 літери
+                                    </div>
+                                    <div *ngIf="checkoutForm.controls.name.errors.pattern">
+                                        У подвійних іменах викорустовуйте дефіс або пропуск
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="surname">Прізвище</label>
-                                <input type="text" class="form-control" id="surname" formControlName="surname" placeholder="Шевченко">
+                                <input type="text" class="form-control" id="surname" formControlName="surname" placeholder="Шевченко" [ngClass]="{'is-invalid': submitted && checkoutForm.controls.surname.errors}">
+                                <div *ngIf="submitted && checkoutForm.controls.surname.errors" class="alert alert-danger">
+                                    <div *ngIf="checkoutForm.controls.surname.errors.required">
+                                        Введіть прізвище
+                                    </div>
+                                    <div *ngIf="checkoutForm.controls.surname.errors.minlength">
+                                        Прізвище має бути довшим за 2 літери
+                                    </div>
+                                    <div *ngIf="checkoutForm.controls.name.errors.pattern">
+                                        У складених прізвизах викорустовуйте дефіс
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="phone">Телефон</label>
-                            <input type="text" class="form-control" id="phone" formControlName="phone" placeholder="+380891234567">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon3">+380</span>
+                                </div>
+                                <input type="text" class="form-control" id="phone" formControlName="phone" placeholder="891234567" [ngClass]="{'is-invalid': submitted && checkoutForm.controls.phone.errors}">
+                            </div>
+                            <div *ngIf="submitted && checkoutForm.controls.phone.errors" class="alert alert-danger mb-3">
+                                <div *ngIf="checkoutForm.controls.phone.errors.required">
+                                    Введіть номер телефона
+                                </div>
+                                <div *ngIf="checkoutForm.controls.phone.errors.pattern">
+                                    Номер складається із 9 цифр
+                                </div>
+                            </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <!-- <label for="city">Місто</label>
-                                <select id="city" class="form-control">
-                                    <option selected>Моє місто</option>
-                                    <option *ngFor="let city of cities">{{city.Description}}</option>
-                                </select> -->
                                 <label for="city">Місто</label>
-                                <input type="text" class="form-control" id="city" formControlName="city" placeholder="Канів">
+                                <input type="text" class="form-control" id="city" formControlName="city" placeholder="Канів" [ngClass]="{'is-invalid': submitted && checkoutForm.controls.city.errors}">
+                                <div *ngIf="submitted && checkoutForm.controls.city.errors" class="alert alert-danger">
+                                    <div *ngIf="checkoutForm.controls.city.errors.required">
+                                        Введіть місто
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-group col-md-6">
-                                <!-- <label for="office">Відділення</label>
-                                <select id="office" class="form-control" (click)="OnLoadOfficesByCity('Київ')">
-                                    <option selected>Найближче до мене</option>
-                                    <option *ngFor="let office of offices">{{office.Description}}</option>
-                                </select> -->
                                 <label for="office">Відділення Нової Пошти</label>
-                                <input type="text" class="form-control" id="office" formControlName="office" placeholder="Номер відділення">
+                                <input type="text" class="form-control" id="office" formControlName="office" placeholder="Номер відділення" [ngClass]="{'is-invalid': submitted && checkoutForm.controls.office.errors}">
+                                <div *ngIf="submitted && checkoutForm.controls.office.errors" class="alert alert-danger">
+                                    <div *ngIf="checkoutForm.controls.office.errors.required">
+                                        Введіть номер відділення
+                                    </div>
+                                    <div *ngIf="checkoutForm.controls.office.errors.pattern">
+                                        Невірний формат номера. Номер має бути від 1 до 9999
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="isCallBack" formControlName="isCallBack">
-                                <label class="form-check-label" for="isCallBack">Треба передзвонити?</label>
+                                <input class="form-check-input" type="checkbox" id="isCallBack" formControlName="isCallBack" />
+                                <label class="form-check-label" for="isCallBack">Я підтверджую замовлення, передзвонювати не треба</label>
                             </div>
                         </div>
                         <div class="form-group">
                             <legend class="col-form-label">Форма оплати</legend>
-                            <div class="col">
+                            <div class="col" [ngClass]="{'is-invalid': submitted && checkoutForm.controls.paymentMethod.errors}">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="paymentMethodCash" id="paymentMethodCash" formControlName="paymentMethodCash" value="cash" checked (click)="paymentMethod='cash'">
+                                    <input class="form-check-input" type="radio" name="paymentMethod" id="paymentMethodCash" formControlName="paymentMethod" value="cash" (click)="paymentMethod='cash'">
                                     <label class="form-check-label" for="paymentMethodCash">Наложений платіж</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="paymentMethodCard" id="paymentMethodCard" formControlName="paymentMethodCard" value="card" (click)="paymentMethod='card'">
-                                    <label class="form-check-label" for="card">Картою</label>
+                                    <input class="form-check-input" type="radio" name="paymentMethod" id="paymentMethodCard" formControlName="paymentMethod" value="card" (click)="paymentMethod='card'">
+                                    <label class="form-check-label" for="paymentMethodCard">Картою</label>
                                 </div>
                             </div>
                             <div class="col">
-                                <p class="h5 text-danger" *ngIf="paymentMethod=='card'">
+                                <div class="alert alert-info" *ngIf="paymentMethod=='card'">
                                     Реквізити карти будуть надані під час опрацювання замовлення
-                                </p>
+                                </div>
+                            </div>
+                            <div *ngIf="submitted && checkoutForm.controls.paymentMethod.errors" class="alert alert-danger">
+                                <div *ngIf="checkoutForm.controls.paymentMethod.errors.required">
+                                    Оберіть спосіб оплати
+                                </div>
                             </div>
                         </div>
                         <div class="form-row">
@@ -102,7 +171,7 @@
                         </div>
                         <div class="form-row">
                             <div class="col">
-                                <button class="btn btn-success float-right mt-2">Замовити</button>
+                                <button class="btn btn-success float-right mt-2" onclick="this.blur();">&#9734; Замовити</button>
                             </div>
                         </div>
                     </form>
@@ -110,6 +179,4 @@
             </div>
         </div>
     </div>
-
-    <p class="h4">{{message}}</p>
 </div>

@@ -1,3 +1,4 @@
+@import "../node_modules/ngx-toastr/toastr.css";
 /* You can add global styles to this file, and also import other style files */
 /* .fa {
     padding: 20px;
@@ -52,4 +53,25 @@
 .vl {
   border-left: 5px solid green;
   height: 50px;
+}
+
+.navbar .navbar-toggler {
+  color: #00cc00 !important;
+  border-color: #00cc00 !important;
+}
+
+.navbar .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,<svg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'><path stroke='rgba(0, 204, 0, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/></svg>") !important;
+}
+
+/* .badge-notify{
+  background:rgb(0, 204, 0);
+  position:relative;
+  top: -20px;
+  left: -35px;
+} */
+
+label.required::after {
+  content: "*";
+  color: red;
 }

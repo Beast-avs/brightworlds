@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrModule } from 'ngx-toastr';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -40,7 +41,15 @@ import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
     CartModule,
     AppRoutingModule,
     HttpClientModule,
-    HttpClientJsonpModule
+    HttpClientJsonpModule,
+    ToastrModule.forRoot({
+      // timeOut: 3000,
+      positionClass: 'toast-bottom-right',
+      // preventDuplicates: true,
+      closeButton: true,
+      disableTimeOut: true,
+      enableHtml: true
+    })
     // GoogleApiModule.forRoot({
     //   provide: NG_GAPI_CONFIG,
     //   useValue: gapiClientConfig

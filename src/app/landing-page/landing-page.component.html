@@ -1,78 +1,58 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <ul class="list-unstyled">
-                <!-- Comics -->
-                <li class="media">
-                    <a data-toggle="modal" data-target="#exampleModal">
-                        <img src="./assets/images/comics_1.jpg" style="height: 30rem !important" alt="Подивитися" class="img-thumbnail">
-                    </a>
-                    <div class="media-body">
-                        <h5 class="mt-0 mb-1">Приходи Собаці у Всесвіті</h5>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+            <!-- About -->
+            <h4>Привіт! Мене звуть Яркий.</h4>
+            <div class="media">
+                <img [src]="spaceman" class="align-self-center img-fluid d-block w-25 mr-3"/>
+                <div class="media-body">
+                    <h5 class="mt-0">Я художник. Я маю аутизм</h5>
+                    Напевне ці дві обставини і призвели до народження історії про Собацю у космосі. Собацю бесхатченка якій не знайшлося місця на планеті Земля і вона, за дивним збігом обставин, розпочала подорож дивними нетутешніми світами. Не те щоби там вона була доречна, але там, в космосі, нікого не хвилювало, що вона Собаця =)
+                </div>
+            </div>
+            <p class="text-justify">Вперше я намалював бомжа з собакою, а згодом і історію викрадення її НЛО, коли мені було 15. Підлітковий вік справжнє випробування навіть якщо ти звичайний підліток. Але коли ти підліток, що має аутизм, все стає ще складніше. Історія про дивну Собацю це трохи і моя історія. Історія про бажання втекти з цієї планети =)</p>
+            <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" *ngFor="let imgC of comicsImages let j=index" [ngClass]="{'active': j==0}"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item" *ngFor="let imgC of comicsImages let i=index" [ngClass]="{'active': i==0}">
+                        <img [src]="imgC" class="carousel-item-img img-fluid center-block" alt="..." />
                     </div>
-                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-body">
-                                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                                        <ol class="carousel-indicators">
-                                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                                        </ol>
-                                        <div class="carousel-inner">
-                                            <div class="carousel-item active">
-                                                <img src="./assets/images/origins_1.jpg" class="d-block w-100" alt="...">
-                                            </div>
-                                            <div class="carousel-item">
-                                                <img src="./assets/images/origins_2.jpg" class="d-block w-100" alt="...">
-                                            </div>
-                                            <div class="carousel-item">
-                                                <img src="./assets/images/origins_3.jpg" class="d-block w-100" alt="...">
-                                            </div>
-                                            <div class="carousel-item">
-                                                <img src="./assets/images/origins_4.jpg" class="d-block w-100" alt="...">
-                                            </div>
-                                            <div class="carousel-item">
-                                                <img src="./assets/images/origins_5.jpg" class="d-block w-100" alt="...">
-                                            </div>
-                                        </div>
-                                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                            <span class="sr-only">Попередня</span>
-                                        </a>
-                                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                            <span class="sr-only">Наступна</span>
-                                        </a>
-                                    </div>
-                                </div>
-                            <!-- <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
-                            </div> -->
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <!-- About -->
-                <li class="media my-4">
-                    <img src="..." alt="..." class="img-thumbnail">
-                    <div class="media-body">
-                        <h5 class="mt-0 mb-1">Про художника</h5>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                    </div>
-                </li>
-                <!-- Others -->
-                <li class="media">
-                    <img src="..." alt="..." class="img-thumbnail">
-                    <div class="media-body">
-                        <h5 class="mt-0 mb-1">Інші роботи</h5>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                    </div>
-                </li>
-            </ul>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Попередня</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Наступна</span>
+                </a>
+            </div>
+            <p class="text-justify">Але тепер, коли мені 19 я маю для вас дещо іншу інтерпретацію дивних див, що сталися з цим цуценям. Яка історія вам ближча вирішуйте самі =)</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <!-- Sobatsia -->
+            <p class="text-justify">Собаця жив із Безхатьком скільки себе пам'ятає. Він полюбив цього простого та доброго чолов'ягу, який невідомо звідки та яким чином опинився на вулиці. Та Собаця не знав справжньої історії свого друга.</p>
+            <p class="text-justify">Колись давно Безхатько був вченим, що працював в одному із численних Київськіх НДІ. Він вважав, що працює над технологією, яка допоможе порозумітися людям та зітре перепони, що заважають знайти порозуміння. Але, добрий чоловік не знав, що проект його засекречено, а результат його роботи загрожує людству. Дізнавшись про небезпеку, він одразу повідомив керівництво. Та де там шукати правди! Чиновники наполегливо попросили припнути язика й далі працювати, погрожуючи розправою у разі непокори. Безхатькові не треба було повторювати двічі, і одного вечора він залишив НДІ прихопивши деякі проектні документи. Маючи на меті поширити інформацію про загрозу, він відправив папери до редакції газети. Після опублікування сенсаційного матерілу, НДІ перестало вести розробку, але почало пошуки Безхатька.</p>
+            <p class="text-justify">З того часу він переховується і живе на вулиці. Одного разу він знайшов цуценя, який копирсався у купі із старими електронними пристроями (треба зауважити, що електроніка була завжди пристрастю Безхатька), та виховав його. Так вони разом стали займатися електронікою та надавати друге життя приладам. Одного разу Собаця приніс якийсь дивний апарат. Безхатько полагодив це, виявилося, що це якийсь дуже дивний маяк. Через деякий час прибув космічний корабель і разом із пристроєм забрала Собацю. Що сталося далі, дивіться на принтах футболок.</p>
+            <img [src]="comicsLogo" class="img-fluid mx-auto pb-3" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <!-- Other -->
+            <p class="text-justify">Не можу не згадати комікс про Капітана Сіда, чиї подорожі Простором та часом карколомні та повні неймовірних пригод. Небезпечні пригоди добрих та щирих Крис-героїв, що приходять на допомогу нужденним. Різноманітні створіння, що живуть своїм помірним життям, та після знайомства залишаються на згадку у вигляді замальовок та ескізів, та чекають своєї черги, щоб розповісти свою історію.</p>
+            <p class="text-justify">Я малюю не тільки комікси із чудернацькими створіннями! Іще я люблю переосмислювати старі добрі казки. Як от <a href="http://elisapeyron.com/kolobok/" target="_blank">про Колобка</a></p>
+            <div class="alert alert-success" role="alert">
+                <h4 class="alert-heading">Дякую!</h4>
+                <p>Підтримати мій магазин можна не лише купивши футболку, а й просто донатом</p>
+                <hr>
+                <p class="mb-0">Картка: 5169-3600-0601-9867</p>
+            </div>
+            <button type="button" class="btn btn-secondary float-right mt-2" [routerLink]="'/products'" onclick="this.blur();">&#8592; В магазин</button>
         </div>
     </div>
 </div>

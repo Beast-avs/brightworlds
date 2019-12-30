@@ -14,8 +14,8 @@
             <div class="card-body">
                 <h5 class="card-title text-center">{{product.name}}</h5>    
                 <p class="card-text" [innerHTML]="product.description"></p>
-                <p class="card-text"><a class="text-success" [routerLink]="['/product', product.id]">Подивитися >></a></p>
-                <button type="button" class="btn btn-success" (click)="OnAddCart(product)" style="position: relative;">Напередзамовлення</button>
+                <p class="card-text"><a class="text-success" [routerLink]="['/product', product.id]">Подивитися &#8594;</a></p>
+                <button type="button" class="btn btn-success" (click)="OnAddCart(product)" style="position: relative;" data-toggle="modal" data-target="#goToCartOrStay" onclick="this.blur();">&#9734; У кошик</button>
                 <p class="card-text text-right"><small class="text-muted">В наявності {{product.inStock}}</small></p>
             </div>
             <div claSS="card-footer">

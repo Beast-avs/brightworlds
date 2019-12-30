@@ -1,6 +1,5 @@
-// import { KeyValue } from '@angular/common';
-
-export class Product {
+import { KeyValue } from '@angular/common';
+export class Bonus {
     id: string;
     name: string;
     shortDescription: string;

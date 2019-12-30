@@ -7,15 +7,8 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './bonus.component.html',
 })
 export class BonusComponent implements OnInit {
-  public bonus: Product;
-
-  constructor(
-    private route: ActivatedRoute
-  ) { }
-
-  ngOnInit() {
-    this.bonus = {
-      id: 'BNS0001',
+  public bonus: Product = {
+    id: 'BNS0001',
       name: 'Це Торба!',
       // tslint:disable-next-line:max-line-length
       shortDescription: 'Зручна, містка, симпатична та гігієнінічно чиста, дружня до довкілля, витривала до довгого використання Торбинка',
@@ -33,6 +26,17 @@ export class BonusComponent implements OnInit {
       price: {uah: 'Подарунок! При купівлі двох і більше футболок', usd: '$10'},
       inStock: 30,
     };
+
+  constructor(
+    private route: ActivatedRoute
+  ) { }
+
+  ngOnInit() {
+
+  }
+
+  getBonusObject(): Product {
+    return this.bonus;
   }
 
 }
