@@ -43,9 +43,12 @@ import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
     HttpClientModule,
     HttpClientJsonpModule,
     ToastrModule.forRoot({
-      timeOut: 3000,
+      // timeOut: 3000,
       positionClass: 'toast-bottom-right',
       // preventDuplicates: true,
+      closeButton: true,
+      disableTimeOut: true,
+      enableHtml: true
     })
     // GoogleApiModule.forRoot({
     //   provide: NG_GAPI_CONFIG,

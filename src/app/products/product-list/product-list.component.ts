@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../product';
 import { ProductService } from '../product.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, take } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { CartService } from 'src/app/cart/cart.service';
 import { ToastrService } from 'ngx-toastr';
@@ -45,7 +45,10 @@ export class ProductListComponent implements OnInit {
     const onError = 'There is an error occured: ' + onAddResult;
     this.message = ((onAddResult === true) ? onSuccess : onError);
     if (onAddResult) {
-      this.toastr.success('Товар ' + product.name + ' додано до кошика', '');
+      this.toastr.success('Товар <b>' + product.name + '</b> додано до кошика. <br /><u>Клацни, щоб відкрити</u>', '')
+      .onTap
+      .pipe(take(1))
+      .subscribe(() => this.GoToCart());
     } else {
       this.toastr.error('Не можу додати товар ' + product.name + ' до кошика', '');
     }
