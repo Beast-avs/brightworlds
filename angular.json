@@ -125,6 +125,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "shop-app"
+    }
+  },
+  "defaultProject": "shop-app",
+  "cli": {
+    "analytics": "ee83142a-f82f-4e34-b308-1067ea07898a"
+  }
 }
