@@ -19,6 +19,6 @@ export const BONUSES: Product[] = [
         images: ['./assets/images/1.2.jpg', './assets/images/1.3.jpg', './assets/images/1.4.jpg', './assets/images/1.5.jpg', './assets/images/1.6.jpg', './assets/images/1.1.jpg'],
         options: {type: 'bonus'},
         price: {uah: '0 грн. Подарунок! При купівлі двох і більше футболок', usd: '$10'},
-        inStock: 30,
+        inStock: 7,
     }
 ];

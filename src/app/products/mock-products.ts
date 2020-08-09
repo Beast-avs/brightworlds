@@ -21,7 +21,7 @@ export const PRODUCTS: Product[] = [
         images: ['./assets/images/space_1_size_xxs_1.jpg', './assets/images/space_1_1.jpg', './assets/images/space_1_2.jpg', './assets/images/space_0.jpg', './assets/images/label.jpg'],
         options: {color: ['#000000', '#ffffff']},
         price: {uah: '400 грн', usd: '$25'},
-        inStock: 32
+        inStock: 24
     },
     {
         id: 'PRD0002',
@@ -42,7 +42,7 @@ export const PRODUCTS: Product[] = [
         images: ['./assets/images/space_2_size_s_1.jpg', './assets/images/space_2_size_s_2.jpg', './assets/images/space_2_size_xxxl_1.jpg', './assets/images/space_2_1.jpg', './assets/images/space_2_2.jpg', './assets/images/space_0.jpg', './assets/images/label.jpg'],
         options: {color: ['#000000', '#ffffff']},
         price: {uah: '400 грн', usd: '$25'},
-        inStock: 31
+        inStock: 18
     },
     {
         id: 'PRD0003',
@@ -64,7 +64,7 @@ export const PRODUCTS: Product[] = [
         images: ['./assets/images/planet_1_1.jpg', './assets/images/planet_1_2.jpg', './assets/images/planet_0.jpg', './assets/images/label.jpg'],
         options: {color: ['#000000', '#ffffff']},
         price: {uah: '400 грн', usd: '$25'},
-        inStock: 32
+        inStock: 23
     },
     {
         id: 'PRD0004',
@@ -86,7 +86,7 @@ export const PRODUCTS: Product[] = [
         images: ['./assets/images/planet_2_size_xxs_1.jpg', './assets/images/planet_2_size_xxxl_1.jpg', './assets/images/planet_2_1.jpg', './assets/images/planet_2_2.jpg', './assets/images/planet_0.jpg', './assets/images/label.jpg'],
         options: {color: ['#000000', '#ffffff']},
         price: {uah: '400 грн', usd: '$25'},
-        inStock: 31
+        inStock: 23
     },
     {
         id: 'PRD0005',
@@ -108,7 +108,7 @@ export const PRODUCTS: Product[] = [
         images: ['./assets/images/trouble_1_size_m_1.jpg', './assets/images/trouble_1_size_m_2.jpg', './assets/images/trouble_1_1.jpg', './assets/images/trouble_1_2.jpg', './assets/images/trouble_0.jpg', './assets/images/label.jpg'],
         options: {color: ['#000000', '#ffffff']},
         price: {uah: '400 грн', usd: '$25'},
-        inStock: 32
+        inStock: 23
     },
     {
         id: 'PRD0006',
@@ -130,6 +130,6 @@ export const PRODUCTS: Product[] = [
         images: ['./assets/images/trouble_2_size_s_1.jpg', './assets/images/trouble_2_size_s_2.jpg', './assets/images/trouble_2_1.jpg', './assets/images/trouble_2_2.jpg', './assets/images/trouble_0.jpg', './assets/images/label.jpg'],
         options: {color: ['#000000', '#ffffff']},
         price: {uah: '400 грн', usd: '$25'},
-        inStock: 30
+        inStock: 26
     }
 ];

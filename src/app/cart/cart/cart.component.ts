@@ -15,7 +15,7 @@ import { Observable } from 'rxjs';
     templateUrl: './cart.component.html'
 })
 export class CartComponent implements OnInit, OnDestroy {
-    @ViewChild('btnClose', {static: false}) closeBtn: ElementRef;
+    @ViewChild('btnClose') closeBtn: ElementRef;
 
     public message: any = {};
     public items: Item[] = [];
